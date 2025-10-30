@@ -12,6 +12,7 @@ abstract class AdminRepository {
   Future<Either<Failure, ArticleModel>> updateArticle(int id, Map<String, dynamic> data);
   Future<Either<Failure, Unit>> deleteArticle(int id);
   Future<Either<Failure, ArticleModel>> getArticle(int id);
+  Future<Either<Failure, Map<String, dynamic>>> getArticleDetail(int id);
   Future<Either<Failure, List<CategoryModel>>> getCategories();
   Future<Either<Failure, List<Map<String, dynamic>>>> getStudents();
   Future<Either<Failure, List<Map<String, dynamic>>>> getAvailableJudges(int articleId);

@@ -9,6 +9,7 @@ abstract class AdminRemoteDataSource {
   Future<ArticleModel> updateArticle(int id, Map<String, dynamic> data);
   Future<void> deleteArticle(int id);
   Future<ArticleModel> getArticle(int id);
+  Future<Map<String, dynamic>> getArticleDetail(int id);
   Future<List<CategoryModel>> getCategories();
   Future<List<Map<String, dynamic>>> getStudents();
   Future<List<Map<String, dynamic>>> getAvailableJudges(int articleId);
@@ -82,6 +83,16 @@ class AdminRemoteDataSourceImpl implements AdminRemoteDataSource {
       return ArticleModel.fromJson(response.data);
     } on DioException catch (e) {
       throw Exception(e.response?.data['message'] ?? 'Error al obtener artículo');
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>> getArticleDetail(int id) async {
+    try {
+      final response = await dio.get('/api/admin/articles/$id/detail');
+      return response.data as Map<String, dynamic>;
+    } on DioException catch (e) {
+      throw Exception(e.response?.data['message'] ?? 'Error al obtener detalles del artículo');
     }
   }
 
