@@ -86,6 +86,16 @@ class AdminRepositoryImpl implements AdminRepository {
   }
 
   @override
+  Future<Either<Failure, List<Map<String, dynamic>>>> getStudents() async {
+    try {
+      final result = await remoteDataSource.getStudents();
+      return Right(result);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
   Future<Either<Failure, List<Map<String, dynamic>>>> getAvailableJudges(
       int articleId) async {
     try {
