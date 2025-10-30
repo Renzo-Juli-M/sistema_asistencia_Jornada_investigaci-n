@@ -1,0 +1,46 @@
+# Laravel
+/backend/vendor/
+/backend/node_modules/
+/backend/.env
+/backend/.env.backup
+/backend/storage/*.key
+/backend/public/hot
+/backend/public/storage
+/backend/storage/*.log
+/backend/bootstrap/cache/*.php
+/backend/.phpunit.result.cache
+/backend/Homestead.json
+/backend/Homestead.yaml
+/backend/npm-debug.log
+/backend/yarn-error.log
+
+# Flutter
+/frontend/.dart_tool/
+/frontend/.flutter-plugins
+/frontend/.flutter-plugins-dependencies
+/frontend/.packages
+/frontend/.pub-cache/
+/frontend/.pub/
+/frontend/build/
+/frontend/ios/Pods/
+/frontend/ios/.symlinks/
+/frontend/ios/Flutter/Flutter.framework
+/frontend/ios/Flutter/Flutter.podspec
+/frontend/linux/flutter/generated_plugin_registrant.cc
+/frontend/linux/flutter/generated_plugin_registrant.h
+/frontend/macos/Flutter/GeneratedPluginRegistrant.swift
+/frontend/windows/flutter/generated_plugin_registrant.cc
+/frontend/windows/flutter/generated_plugin_registrant.h
+*.g.dart
+*.freezed.dart
+*.iml
+.idea/
+.DS_Store
+
+# General
+.vscode/
+.vs/
+*.log
+*.swp
+*.swo
+*~
