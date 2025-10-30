@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
         // Seed roles first
         $this->call(RoleSeeder::class);
 
+        // Seed categories and criteria
+        $this->call(ArticleCategorySeeder::class);
+        $this->call(EvaluationCriteriaSeeder::class);
+
         // Create a default admin user
         $adminRole = Role::where('name', 'admin')->first();
 
