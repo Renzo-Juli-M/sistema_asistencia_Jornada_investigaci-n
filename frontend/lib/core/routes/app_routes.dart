@@ -23,6 +23,13 @@ import '../../features/judge/presentation/pages/judge_dashboard_page.dart';
 import '../../features/judge/presentation/pages/judge_evaluation_form_page.dart';
 import '../../features/judge/presentation/pages/judge_stats_page.dart';
 import '../../features/judge/presentation/pages/judge_history_page.dart';
+import '../../features/student/presentation/bloc/student_dashboard_bloc.dart';
+import '../../features/student/presentation/bloc/qr_generator_bloc.dart';
+import '../../features/student/presentation/pages/student_dashboard_page.dart';
+import '../../features/student/presentation/pages/qr_generator_page.dart';
+import '../../features/student/presentation/pages/qr_scanner_page.dart';
+import '../../features/student/presentation/pages/attendance_history_page.dart';
+import '../../features/student/presentation/pages/student_stats_page.dart';
 
 class AppRoutes {
   // Admin Routes
@@ -41,6 +48,13 @@ class AppRoutes {
   static const String judgeEvaluation = '/judge/evaluation';
   static const String judgeStats = '/judge/stats';
   static const String judgeHistory = '/judge/history';
+
+  // Student Routes
+  static const String studentDashboard = '/student/dashboard';
+  static const String studentQRGenerator = '/student/qr-generator';
+  static const String studentQRScanner = '/student/qr-scanner';
+  static const String studentHistory = '/student/history';
+  static const String studentStats = '/student/stats';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -141,6 +155,40 @@ class AppRoutes {
       case judgeHistory:
         return MaterialPageRoute(
           builder: (_) => const JudgeHistoryPage(),
+        );
+
+      // Student Routes
+      case studentDashboard:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<StudentDashboardBloc>()
+              ..add(LoadStudentDashboardEvent()),
+            child: const StudentDashboardPage(),
+          ),
+        );
+
+      case studentQRGenerator:
+        final articles = settings.arguments as List<Map<String, dynamic>>;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<QRGeneratorBloc>(),
+            child: QRGeneratorPage(articles: articles),
+          ),
+        );
+
+      case studentQRScanner:
+        return MaterialPageRoute(
+          builder: (_) => const QRScannerPage(),
+        );
+
+      case studentHistory:
+        return MaterialPageRoute(
+          builder: (_) => const AttendanceHistoryPage(),
+        );
+
+      case studentStats:
+        return MaterialPageRoute(
+          builder: (_) => const StudentStatsPage(),
         );
 
       default:
