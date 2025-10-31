@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import '../models/dashboard_stats_model.dart';
 import '../models/article_model.dart';
 
@@ -20,10 +21,11 @@ abstract class AdminRemoteDataSource {
   Future<void> importArticles(FormData formData);
 }
 
+@LazySingleton(as: AdminRemoteDataSource)
 class AdminRemoteDataSourceImpl implements AdminRemoteDataSource {
   final Dio dio;
 
-  AdminRemoteDataSourceImpl({required this.dio});
+  AdminRemoteDataSourceImpl(this.dio);
 
   @override
   Future<DashboardStatsModel> getDashboardStats() async {

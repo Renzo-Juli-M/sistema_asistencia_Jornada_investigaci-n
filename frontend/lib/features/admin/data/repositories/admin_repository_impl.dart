@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/dashboard_stats.dart';
 import '../../domain/entities/article.dart';
@@ -7,10 +8,11 @@ import '../datasources/admin_remote_datasource.dart';
 import '../models/article_model.dart';
 import '../models/category_model.dart';
 
+@LazySingleton(as: AdminRepository)
 class AdminRepositoryImpl implements AdminRepository {
   final AdminRemoteDataSource remoteDataSource;
 
-  AdminRepositoryImpl({required this.remoteDataSource});
+  AdminRepositoryImpl(this.remoteDataSource);
 
   @override
   Future<Either<Failure, DashboardStats>> getDashboardStats() async {

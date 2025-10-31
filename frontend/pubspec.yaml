@@ -33,6 +33,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.9
 
+  # File Picker
+  file_picker: ^6.1.1
+
   # Code Generation
   json_annotation: ^4.8.1
   freezed_annotation: ^2.4.1
