@@ -128,6 +128,17 @@ class AdminRepositoryImpl implements AdminRepository {
   }
 
   @override
+  Future<Either<Failure, Map<String, dynamic>>> getEvaluations(
+      Map<String, dynamic> params) async {
+    try {
+      final result = await remoteDataSource.getEvaluations(params);
+      return Right(result);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
   Future<Either<Failure, Unit>> importStudents(formData) async {
     try {
       await remoteDataSource.importStudents(formData);

@@ -17,6 +17,7 @@ abstract class AdminRepository {
   Future<Either<Failure, List<Map<String, dynamic>>>> getStudents();
   Future<Either<Failure, List<Map<String, dynamic>>>> getAvailableJudges(int articleId);
   Future<Either<Failure, Unit>> assignJudges(int articleId, List<int> judgeIds);
+  Future<Either<Failure, Map<String, dynamic>>> getEvaluations(Map<String, dynamic> params);
   Future<Either<Failure, Unit>> importStudents(dynamic formData);
   Future<Either<Failure, Unit>> importJudges(dynamic formData);
   Future<Either<Failure, Unit>> importArticles(dynamic formData);

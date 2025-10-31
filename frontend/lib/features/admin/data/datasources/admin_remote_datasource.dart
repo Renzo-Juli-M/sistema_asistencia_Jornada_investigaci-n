@@ -14,6 +14,7 @@ abstract class AdminRemoteDataSource {
   Future<List<Map<String, dynamic>>> getStudents();
   Future<List<Map<String, dynamic>>> getAvailableJudges(int articleId);
   Future<void> assignJudges(int articleId, List<int> judgeIds);
+  Future<Map<String, dynamic>> getEvaluations(Map<String, dynamic> params);
   Future<void> importStudents(FormData formData);
   Future<void> importJudges(FormData formData);
   Future<void> importArticles(FormData formData);
@@ -143,6 +144,19 @@ class AdminRemoteDataSourceImpl implements AdminRemoteDataSource {
       });
     } on DioException catch (e) {
       throw Exception(e.response?.data['message'] ?? 'Error al asignar jurados');
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>> getEvaluations(Map<String, dynamic> params) async {
+    try {
+      final response = await dio.get(
+        '/api/admin/evaluations',
+        queryParameters: params,
+      );
+      return response.data as Map<String, dynamic>;
+    } on DioException catch (e) {
+      throw Exception(e.response?.data['message'] ?? 'Error al obtener evaluaciones');
     }
   }
 
