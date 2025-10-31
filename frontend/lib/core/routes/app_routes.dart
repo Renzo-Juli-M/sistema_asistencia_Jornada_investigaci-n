@@ -18,8 +18,14 @@ import '../../features/admin/presentation/pages/import_data_page.dart';
 import '../../features/admin/presentation/pages/judge_assignment_page.dart';
 import '../../features/admin/presentation/pages/evaluations_page.dart';
 import '../../features/admin/presentation/pages/reports_page.dart';
+import '../../features/judge/presentation/bloc/judge_dashboard_bloc.dart';
+import '../../features/judge/presentation/pages/judge_dashboard_page.dart';
+import '../../features/judge/presentation/pages/judge_evaluation_form_page.dart';
+import '../../features/judge/presentation/pages/judge_stats_page.dart';
+import '../../features/judge/presentation/pages/judge_history_page.dart';
 
 class AppRoutes {
+  // Admin Routes
   static const String adminDashboard = '/admin/dashboard';
   static const String articlesList = '/admin/articles';
   static const String articleCreate = '/admin/articles/create';
@@ -29,6 +35,12 @@ class AppRoutes {
   static const String importData = '/admin/import';
   static const String evaluations = '/admin/evaluations';
   static const String reports = '/admin/reports';
+
+  // Judge Routes
+  static const String judgeDashboard = '/judge/dashboard';
+  static const String judgeEvaluation = '/judge/evaluation';
+  static const String judgeStats = '/judge/stats';
+  static const String judgeHistory = '/judge/history';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -103,6 +115,32 @@ class AppRoutes {
       case reports:
         return MaterialPageRoute(
           builder: (_) => const ReportsPage(),
+        );
+
+      // Judge Routes
+      case judgeDashboard:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<JudgeDashboardBloc>()
+              ..add(LoadMyAssignmentsEvent()),
+            child: const JudgeDashboardPage(),
+          ),
+        );
+
+      case judgeEvaluation:
+        final assignmentId = settings.arguments as int;
+        return MaterialPageRoute(
+          builder: (_) => JudgeEvaluationFormPage(assignmentId: assignmentId),
+        );
+
+      case judgeStats:
+        return MaterialPageRoute(
+          builder: (_) => const JudgeStatsPage(),
+        );
+
+      case judgeHistory:
+        return MaterialPageRoute(
+          builder: (_) => const JudgeHistoryPage(),
         );
 
       default:
