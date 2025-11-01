@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import '../models/user_model.dart';
 
 abstract class AuthRemoteDataSource {
@@ -9,6 +10,7 @@ abstract class AuthRemoteDataSource {
   Future<UserModel> getCurrentUser();
 }
 
+@LazySingleton(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final Dio dio;
 
