@@ -1,5 +1,5 @@
-name: sistema_asistencia_frontend
-description: Sistema de asistencia para jornada de investigación
+name: asistencias_app
+description: Sistema de asistencias con QR
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -10,65 +10,63 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # State Management
+  # UI y diseño
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
+  shimmer: ^3.0.0
+  cupertino_icons: ^1.0.8
+
+  # Gestión de estado y utilidades
   flutter_bloc: ^8.1.3
   equatable: ^2.0.5
+  dartz: ^0.10.1
+  intl: ^0.19.0
+  logger: ^2.0.2+1
+  freezed_annotation: ^2.4.1
 
-  # Dependency Injection
+  # Inyección de dependencias
   get_it: ^7.6.4
   injectable: ^2.3.2
 
-  # HTTP
+  # HTTP & API
   dio: ^5.4.0
+  retrofit: ^4.0.3
+  json_annotation: ^4.8.1
   pretty_dio_logger: ^1.3.1
 
-  # Local Storage
-  shared_preferences: ^2.2.2
+  # Archivos y almacenamiento
+  file_picker: ^8.1.4
+  shared_preferences: ^2.3.0
   flutter_secure_storage: ^9.0.0
+  path_provider: ^2.1.5
+  excel: ^4.0.6
 
-  # Functional Programming
-  dartz: ^0.10.1
+  # Permisos y multimedia
+  permission_handler: ^11.3.1
+  cached_network_image: ^3.4.1
+  jwt_decoder: ^2.0.1
 
-  # UI
-  cupertino_icons: ^1.0.6
-  flutter_svg: ^2.0.9
+  # Gráficos y refresco
+  fl_chart: ^0.69.2
+  pull_to_refresh: ^2.0.0
 
-  # File Picker
-  file_picker: ^6.1.1
-
-  # QR Code
+  # QR
   qr_flutter: ^4.1.0
-  mobile_scanner: ^3.5.6
+  mobile_scanner: ^3.5.5
 
-  # Code Generation
-  json_annotation: ^4.8.1
-  freezed_annotation: ^2.4.1
+  # Navegación
+  go_router: ^14.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # Linting
   flutter_lints: ^3.0.0
 
-  # Code Generation
+  # Generadores compatibles
   build_runner: ^2.4.7
   injectable_generator: ^2.4.1
-  json_serializable: ^6.7.1
+  retrofit_generator: ^8.0.6
+  json_serializable: ^6.8.0
   freezed: ^2.4.6
-
-  # Testing
-  mockito: ^5.4.4
-  bloc_test: ^9.1.5
-
-flutter:
-  uses-material-design: true
-
-  # assets:
-  #   - images/
-  #   - assets/
-
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  analyzer: ^6.4.1
